@@ -11,7 +11,6 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { Dialog } from "@radix-ui/react-dialog";
-import Image from "next/image";
 import { useState } from "react";
 
 export default function Home() {
