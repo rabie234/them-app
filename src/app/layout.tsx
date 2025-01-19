@@ -7,7 +7,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import AppNav from "@/components/app-navigations";
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
+  variable: "--font-geist-sans ",
   subsets: ["latin"],
 });
 
