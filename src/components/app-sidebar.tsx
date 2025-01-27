@@ -3,6 +3,8 @@
 import {
   Calendar,
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   Home,
   Inbox,
   Search,
@@ -15,9 +17,13 @@ import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
+  SidebarHeader,
   SidebarMenu,
+  SidebarMenuBadge,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarMenuSub,
+  SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
 import {
   Collapsible,
@@ -41,6 +47,7 @@ const items = [
     title: "Calendar",
     url: "#",
     icon: Calendar,
+    badge: 24,
   },
   {
     title: "Search",
@@ -57,9 +64,13 @@ const items = [
 export function AppSidebar() {
   return (
     <Sidebar>
+      <SidebarHeader>
+        <div className=" text-secondary-foreground py-1 px-2 border-b border-primary">
+          <img src="assets/images/logo.png"></img>
+        </div>
+      </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
@@ -68,40 +79,36 @@ export function AppSidebar() {
                     <a href={item.url}>
                       <item.icon />
                       <span>{item.title}</span>
+                      {item.badge && (
+                        <SidebarMenuBadge className="bg-destructive text-white rounded-full">
+                          24
+                        </SidebarMenuBadge>
+                      )}
                     </a>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
-              <Collapsible defaultOpen={false} className="group/collapsible">
-                <SidebarGroup>
-                  <SidebarGroupLabel asChild>
-                    <CollapsibleTrigger>
-                      Help
-                      <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
-                    </CollapsibleTrigger>
-                  </SidebarGroupLabel>
+              <Collapsible defaultOpen className="group/collapsible">
+                <SidebarMenuItem>
+                  <CollapsibleTrigger asChild>
+                    <SidebarMenuButton asChild>
+                      <span>
+                        <Calendar />
+                        <span>Help</span>
+                        <ChevronRight className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-90" />
+                      </span>
+                    </SidebarMenuButton>
+                  </CollapsibleTrigger>
                   <CollapsibleContent>
-                    <SidebarGroupContent>
-                      <SidebarMenu>
-                        <SidebarMenuItem>
-                          <SidebarMenuButton asChild>
-                            <a href="/help/faq">FAQ</a>
-                          </SidebarMenuButton>
-                        </SidebarMenuItem>
-                        <SidebarMenuItem>
-                          <SidebarMenuButton asChild>
-                            <a href="/help/faq">Contact Support </a>
-                          </SidebarMenuButton>
-                        </SidebarMenuItem>
-                        <SidebarMenuItem>
-                          <SidebarMenuButton asChild>
-                            <a href="/help/faq">Terms Conditions</a>
-                          </SidebarMenuButton>
-                        </SidebarMenuItem>
-                      </SidebarMenu>
-                    </SidebarGroupContent>
+                    <SidebarMenuSub>
+                      <SidebarMenuSubItem>
+                        <SidebarMenuButton asChild>
+                          <a href="#">Hello</a>
+                        </SidebarMenuButton>
+                      </SidebarMenuSubItem>
+                    </SidebarMenuSub>
                   </CollapsibleContent>
-                </SidebarGroup>
+                </SidebarMenuItem>
               </Collapsible>
             </SidebarMenu>
           </SidebarGroupContent>
