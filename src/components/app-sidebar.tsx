@@ -2,8 +2,6 @@
 
 import {
   Calendar,
-  ChevronDown,
-  ChevronLeft,
   ChevronRight,
   Home,
   Inbox,
@@ -16,7 +14,6 @@ import {
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuBadge,
