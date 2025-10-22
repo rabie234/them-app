@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# them-app
 
-## Getting Started
+A Next.js 15 app with a responsive sidebar layout, theme switching, and demo charts using Recharts. It uses Radix UI, shadcn/ui primitives, Tailwind CSS, and next-themes.
 
-First, run the development server:
+## Tech stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Next.js 15, React 19, TypeScript
+- Tailwind CSS with custom theme tokens and tailwindcss-animate
+- Radix UI primitives and shadcn/ui components
+- next-themes for theme switching
+- Recharts for charts
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Getting started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Install: `npm i`
+- Dev: `npm run dev`
+- Build: `npm run build`
+- Start: `npm start`
+- Lint: `npm run lint`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Open http://localhost:3000 in your browser.
 
-## Learn More
+## Project structure
 
-To learn more about Next.js, take a look at the following resources:
+- src/app/layout.tsx: App shell with ThemeProvider, SidebarProvider, AppSidebar, AppNav, SidebarTrigger, and metadata.
+- src/app/page.tsx: Home page with charts and a Drawer demo.
+- src/components/ui: Reusable UI (button, card, dropdown, navigation, separator, sheet, skeleton, tooltip, chart).
+- src/components: AppSidebar, AppNav, charts, theme provider, theme switcher.
+- tailwind.config.ts: Theme tokens and content globs.
+- components.json: shadcn/ui config and path aliases.
+- next.config.ts, eslint.config.mjs: Build and lint setup.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## App architecture
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The root layout wraps the app with theme and sidebar providers, rendering the sidebar, top navigation, and page content.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```mermaid
+flowchart TD
+  A[RootLayout] --> B[ThemeProvider]
+  B --> C[SidebarProvider]
+  C --> D[AppSidebar]
+  C --> E[Main]
+  E --> F[SidebarTrigger]
+  E --> G[AppNav]
+  E --> H[Page children]
